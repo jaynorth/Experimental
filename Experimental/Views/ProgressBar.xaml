@@ -8,11 +8,19 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1">
+            <Label 
+                Margin="10"
+                Content="{Binding Chrono}"
+                Background="Aquamarine"
+                MinHeight="20"
+                Height="Auto"
+                Width="400"             
+                   />
             <ProgressBar 
                 Foreground="Aqua"
                 Width="400"
@@ -29,7 +37,7 @@
                 Text="{Binding Text, Mode=TwoWay}"
                 Margin="10"
                 Background="LightGray"
-                MinHeight="100"
+                MinHeight="20"
                 Width="400"
                 HorizontalAlignment="Center"/>
             <TextBlock

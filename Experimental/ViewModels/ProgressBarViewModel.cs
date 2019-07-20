@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,6 +17,7 @@ namespace Experimental.ViewModels
             DoWorkCommand = new RelayCommand(() => { var task = DoWorkcommand(); });
             Value = 0d;
             Text = "ProgressBarLab Experiments";
+            Chrono = "Ready";
         }
 
         public RelayCommand DoWorkCommand { get; set; }
@@ -80,20 +82,41 @@ namespace Experimental.ViewModels
             }
         }
 
+        private string _chrono;
+
+        public string Chrono
+        {
+            get { return _chrono; }
+            set
+            {
+                if (_chrono!= value)
+                {
+                    _chrono = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         private async Task DoWorkcommand()
         {
-           var t = Task.Run(() =>
+            Stopwatch stopWatch = new Stopwatch();
+            Chrono = "Start !!!";
+            stopWatch.Start();
+            var t = Task.Run(() =>
 
-            {
-                for (int i = 0; i < 100; i++)
-                {
-                    TextInfo = i.ToString() + "YEAHHHHHHH";
-                    Thread.Sleep(100);
-                }
+             {
+                 for (int i = 0; i < 100; i++)
+                 {
+                     TextInfo = i.ToString() + " " + "YEAHHHHHHH Baby ";
+                     Thread.Sleep(10);
+                 }
 
-            });
+                 TextInfo = TextInfo + " " + "<--- Now I'm done!";
 
-            await Task.Run(() => 
+             });
+
+            await Task.Run(() =>
             {
                 Value = 0;
                 MinimumValue = 0;
@@ -101,11 +124,13 @@ namespace Experimental.ViewModels
                 {
                     Value = i;
                     Text = i.ToString();
-                    Thread.Sleep(200);
+                    Thread.Sleep(50);
                 }
             });
 
-
+            stopWatch.Stop();
+            double time = stopWatch.ElapsedMilliseconds / 1000;
+            Chrono = "Done in " + time.ToString() + " seconds";
         }
 
     }
