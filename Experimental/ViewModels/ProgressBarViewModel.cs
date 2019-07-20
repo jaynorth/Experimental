@@ -49,6 +49,21 @@ namespace Experimental.ViewModels
             }
         }
 
+        private string _textInfo;
+
+        public string TextInfo
+        {
+            get { return _textInfo; }
+            set
+            {
+                if (_textInfo != value)
+                {
+                    _textInfo = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
 
         private double _minimumValue;
 
@@ -67,6 +82,17 @@ namespace Experimental.ViewModels
 
         private async Task DoWorkcommand()
         {
+           var t = Task.Run(() =>
+
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    TextInfo = i.ToString() + "YEAHHHHHHH";
+                    Thread.Sleep(100);
+                }
+
+            });
+
             await Task.Run(() => 
             {
                 Value = 0;
@@ -75,10 +101,11 @@ namespace Experimental.ViewModels
                 {
                     Value = i;
                     Text = i.ToString();
-                    Thread.Sleep(100);
+                    Thread.Sleep(200);
                 }
             });
-           
+
+
         }
 
     }
