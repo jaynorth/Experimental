@@ -15,7 +15,7 @@ namespace Experimental.ViewModels
         {
             DoWorkCommand = new RelayCommand(() => { var task = DoWorkcommand(); });
             Value = 0d;
-            Text = "ProgressBarLab";
+            Text = "ProgressBarLab Experiments";
         }
 
         public RelayCommand DoWorkCommand { get; set; }
@@ -71,11 +71,11 @@ namespace Experimental.ViewModels
             {
                 Value = 0;
                 MinimumValue = 0;
-                for (double i = 0; i <= 100; i = i + 2)
+                for (double i = 0; i <= 100; i = i + 1)
                 {
                     Value = i;
                     Text = i.ToString();
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                 }
             });
            

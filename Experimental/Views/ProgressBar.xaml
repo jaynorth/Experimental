@@ -14,6 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1">
             <ProgressBar 
+                Foreground="Aqua"
                 Width="400"
                 Name="TestProgressBar"
                 Height="20"
