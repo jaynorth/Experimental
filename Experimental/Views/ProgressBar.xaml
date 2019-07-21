@@ -27,7 +27,7 @@
                 Name="TestProgressBar"
                 Height="20"
                 HorizontalAlignment="Center"
-                Background="LightBlue"
+                Background="Lavender"
                 Value="{Binding Value, Mode=TwoWay}"
                 Minimum="{Binding MinimumValue, Mode=TwoWay}"
                 Maximum="100"         
@@ -56,6 +56,7 @@
                 Width="60"
                 HorizontalAlignment="Center"
                 Command="{Binding DoWorkCommand}"
+                IsEnabled="{Binding ButtonIsEnabled, Mode=TwoWay}"
                 />
             <TextBox 
                 MinHeight="50"

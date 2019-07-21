@@ -14,10 +14,11 @@ namespace Experimental.ViewModels
     {
         public ProgressBarViewModel()
         {
-            DoWorkCommand = new RelayCommand(() => { var task = DoWorkcommand(); });
+            DoWorkCommand = new RelayCommand(() => { Task t = DoWorkcommandAsync(); });
             Value = 0d;
             Text = "ProgressBarLab Experiments";
             Chrono = "Ready";
+            ButtonIsEnabled = true;
         }
 
         public RelayCommand DoWorkCommand { get; set; }
@@ -96,27 +97,52 @@ namespace Experimental.ViewModels
                 }
             }
         }
+        public Task t1 { get; set; }
+        public Task t2 { get; set; }
 
+        private bool _buttonIsenabled;
 
-        private async Task DoWorkcommand()
+        public bool ButtonIsEnabled
         {
+            get { return _buttonIsenabled; }
+            set
+            {
+                if (_buttonIsenabled!=value)
+                {
+                    _buttonIsenabled = value;
+                    OnPropertyChanged();
+                }
+                
+            }
+        }
+
+
+
+
+        private async Task DoWorkcommandAsync()
+        {
+            Task.Run(() => ButtonIsEnabled = false );
+            
             Stopwatch stopWatch = new Stopwatch();
             Chrono = "Start !!!";
+            
+            stopWatch.Reset();
             stopWatch.Start();
-            var t = Task.Run(() =>
+
+            var t1 =  Task.Run(() =>
 
              {
                  for (int i = 0; i < 100; i++)
                  {
                      TextInfo = i.ToString() + " " + "YEAHHHHHHH Baby ";
-                     Thread.Sleep(10);
+                     Thread.Sleep(100);
                  }
 
                  TextInfo = TextInfo + " " + "<--- Now I'm done!";
 
              });
 
-            await Task.Run(() =>
+            var t2 = Task.Run(() =>
             {
                 Value = 0;
                 MinimumValue = 0;
@@ -124,13 +150,18 @@ namespace Experimental.ViewModels
                 {
                     Value = i;
                     Text = i.ToString();
-                    Thread.Sleep(50);
+                    Thread.Sleep(70);
                 }
             });
+
+            await Task.WhenAll(t1, t2);
 
             stopWatch.Stop();
             double time = stopWatch.ElapsedMilliseconds / 1000;
             Chrono = "Done in " + time.ToString() + " seconds";
+
+            await Task.Run(() => ButtonIsEnabled = true);
+            
         }
 
     }
