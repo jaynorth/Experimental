@@ -121,13 +121,14 @@ namespace Experimental.ViewModels
 
         private async Task DoWorkcommandAsync()
         {
-            Task.Run(() => ButtonIsEnabled = false );
+            await Task.Run(() => ButtonIsEnabled = false );
             
             Stopwatch stopWatch = new Stopwatch();
-            Chrono = "Start !!!";
+
             
             stopWatch.Reset();
             stopWatch.Start();
+            Chrono = "Running !!!";
 
             var t1 =  Task.Run(() =>
 
@@ -135,7 +136,7 @@ namespace Experimental.ViewModels
                  for (int i = 0; i < 100; i++)
                  {
                      TextInfo = i.ToString() + " " + "YEAHHHHHHH Baby ";
-                     Thread.Sleep(100);
+                     Thread.Sleep(20);
                  }
 
                  TextInfo = TextInfo + " " + "<--- Now I'm done!";
@@ -150,7 +151,7 @@ namespace Experimental.ViewModels
                 {
                     Value = i;
                     Text = i.ToString();
-                    Thread.Sleep(70);
+                    Thread.Sleep(15);
                 }
             });
 
@@ -158,10 +159,9 @@ namespace Experimental.ViewModels
 
             stopWatch.Stop();
             double time = stopWatch.ElapsedMilliseconds / 1000;
+            await Task.Run(() => ButtonIsEnabled = true);
             Chrono = "Done in " + time.ToString() + " seconds";
 
-            await Task.Run(() => ButtonIsEnabled = true);
-            
         }
 
     }

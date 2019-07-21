@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Experimental"
         mc:Ignorable="d"
+        Background="Turquoise" 
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <!--<Views:sd_calculate />-->
-        <Views:ProgressBar />
+        <!--<Views:ProgressBar />-->
+        <Views:SD_Progress />
     </Grid>
 </Window>
