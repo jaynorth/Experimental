@@ -14,7 +14,7 @@
             <Setter Property="Margin" Value="0,5,0,0"/>
         </Style>
     </UserControl.Resources>
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
@@ -50,6 +50,24 @@
                 <TextBlock Text="{Binding NumberOfCaloriesSpared}" />
                 <TextBlock Text=" KC" />
             </StackPanel>
+        </DockPanel>
+        <DockPanel Grid.Row="1" Grid.Column="2" >
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Detox Level 1"/>
+                <ProgressBar 
+                Orientation="Horizontal"
+                Foreground="GreenYellow"
+                Width="400"
+                Name="TestProgressBar"
+                Height="20"
+                HorizontalAlignment="Center"
+                Background="Lavender"
+                Value="{Binding Level1Value, Mode=TwoWay}"
+                Minimum="{Binding Level1MinimumValue, Mode=TwoWay}"
+                Maximum="{Binding Level1MaximumValue, Mode=TwoWay}"       
+                />
+            </StackPanel>
+
         </DockPanel>
         
     </Grid>

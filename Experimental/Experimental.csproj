@@ -82,6 +82,9 @@
     <Compile Include="Views\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\sd_DefaultValues.xaml.cs">
+      <DependentUpon>sd_DefaultValues.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SD_Progress.xaml.cs">
       <DependentUpon>SD_Progress.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\sd_DefaultValues.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +144,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Calculate\Calculate.csproj">
+      <Project>{BB2C274B-08C4-450D-AE5D-163FEF5BA7B6}</Project>
+      <Name>Calculate</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

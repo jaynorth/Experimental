@@ -24,7 +24,7 @@ namespace Experimental.Views
         public SD_Progress()
         {
             InitializeComponent();
-            this.DataContext = new SD_ProgressViewModel();
+
         }
     }
 }

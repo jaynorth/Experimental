@@ -1,5 +1,4 @@
-﻿using Experimental.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Experimental
+namespace Experimental.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for sd_DefaultValues.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class sd_DefaultValues : UserControl
     {
-        public MainWindow()
+        public sd_DefaultValues()
         {
             InitializeComponent();
-            this.DataContext = new SD_ProgressViewModel();
         }
     }
 }

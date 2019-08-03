@@ -11,18 +11,7 @@ namespace Experimental.ViewModels
     {
         public SD_ProgressViewModel()
         {
-            SetDefaultValues();
-            
-        }
-
-        private void SetDefaultValues()
-        {
-            StartDate = new DateTime(2019, 7, 21);
-            AverageDrinksPerDay = (decimal)33 / 7;
-            AverageCostPerDrink = 1.5M;
-            AverageLitersPerDrink = 0.5M;
-            AverageEmptyCaloriesPerLiter = 215 * 2;
-            InitialWeight = 67.5M;
+            Init();
         }
 
         public DateTime StartDate { get; set; }
@@ -36,8 +25,14 @@ namespace Experimental.ViewModels
 
         public decimal MoneySaved
         {
-            get { return Math.Round(((decimal)NumberOfDays * (decimal)AverageDrinksPerDay * AverageCostPerDrink),2); }
-            set { _moneySaved = value; }
+            get { return _moneySaved; }
+            set { _moneySaved = value;
+                if (_moneySaved!=value)
+                {
+                    _moneySaved = value;
+                    OnPropertyChanged();
+                }
+            }
         }
         private decimal _numberOfDrinksSpared;
 
@@ -64,10 +59,72 @@ namespace Experimental.ViewModels
         }
 
         public decimal AverageDrinksPerDay { get; set; }
-        public decimal AverageCostPerDrink { get; set; }
+        //public decimal AverageCostPerDrink { get; set; }
+        private decimal _averageCostPerDrink;
+
+        public decimal AverageCostPerDrink
+        {
+            get { return _averageCostPerDrink; }
+            set
+            { 
+                if (AverageCostPerDrink!=value)
+                {
+                    _averageCostPerDrink = value;
+                    OnPropertyChanged();
+                    MoneySaved = Calculate.Calculate.MoneySavedCalc(NumberOfDays, AverageDrinksPerDay, AverageCostPerDrink); //.MoneySavedCalc(NumberOfDays, AverageDrinksPerDay, AverageCostPerDrink);
+                    OnPropertyChanged("MoneySaved");
+                }
+            }
+        }
+
         public decimal AverageLitersPerDrink { get; set; }
         public decimal AverageEmptyCaloriesPerLiter { get; set; }
         public decimal InitialWeight { get; set; }
+        public decimal UnitsPerWeek { get; set; }
+        /* ProgressBar Level 1*/
+        public decimal Level1Value { get; set; }
+        public decimal Level1MinimumValue { get; set; }
+        public decimal Level1MaximumValue { get; set; }
+
+        private void Init()
+        {
+            SetDefaultValues();
+            UpdateProgressBars();
+        }
+
+        private void UpdateProgressBars()
+        {
+            UpdateProgressBarLevel1();
+        }
+
+        private void UpdateProgressBarLevel1()
+        {
+            Level1MinimumValue = 0;
+            Level1MaximumValue = 17;
+            if (NumberOfDays >= Level1MaximumValue)
+            {
+                Level1Value = Level1MaximumValue;
+            }
+            else
+            {
+                Level1Value = NumberOfDays;
+            }
+        }
+
+        private void SetDefaultValues()
+        {
+            StartDate = new DateTime(2019, 7, 21);
+            AverageDrinksPerDay = (decimal)33 / 7;
+            AverageCostPerDrink = Calculate.Calculate.ConvertTodecimal("1.4M");
+            AverageLitersPerDrink = 0.5M;
+            AverageEmptyCaloriesPerLiter = 215 * 2;
+            InitialWeight = 67.5M;
+            UnitsPerWeek = AverageDrinksPerDay * 7 * 1.8M;
+            var RecommendedUnitsPerweek = 14;
+
+            
+        }
+
 
     }
 }
