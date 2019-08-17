@@ -1,5 +1,5 @@
-﻿using System;
-using Calculate;
+﻿using Calculate;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CalculateTests
@@ -54,31 +54,46 @@ namespace CalculateTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
-        public void MoneySavedCalcTest()
+        [TestMethod]
+
+        public void ConvertTodecimalTest_Valid()
         {
-            Assert.Fail();
+            //Arrange
+            decimal whatever = 13m;
+            decimal expected = 13m;
+            //Act
+            var actual = Calculate.Calculate.ConvertTodecimal(whatever);
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(ArgumentException))]
-        //public void MoneySavedCalcTest_isString()
-        //{
-        //    //Arrange
-        //    string NumberOfDays = 13M;
-        //    string AverageDrinksPerDay = "2m";
-        //    string AverageCostPerDrink = null;
+        [TestMethod]
 
-        //    //Act
-        //    var actual = Calculate.Calculate.MoneySavedCalc(NumberOfDays, AverageDrinksPerDay, AverageCostPerDrink);
-        //    //Assert
+        public void ConvertTodecimalTest_String_Valid()
+        {
+            //Arrange
+            string whatever = "14";
+            decimal expected = 14m;
+            //Act
+            var actual = Calculate.Calculate.ConvertTodecimal(whatever);
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
-        //}
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void MoneySavedCalcTest_isString_null()
+        {
+            //Arrange
+            string NumberOfDays = "13M";
+            string AverageDrinksPerDay = "2m";
+            string AverageCostPerDrink = null;
 
-        //[TestMethod()]
-        //public void ConvertTodecimalTest()
-        //{
-        //    Assert.Fail();
-        //}
+            //Act
+            var actual = Calculate.Calculate.MoneySavedCalc(NumberOfDays, AverageDrinksPerDay, AverageCostPerDrink);
+            //Assert
+
+        }
+
     }
 }

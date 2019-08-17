@@ -115,7 +115,7 @@ namespace Experimental.ViewModels
         {
             StartDate = new DateTime(2019, 7, 21);
             AverageDrinksPerDay = (decimal)33 / 7;
-            AverageCostPerDrink = Calculate.Calculate.ConvertTodecimal("1.4M");
+            AverageCostPerDrink = Calculate.Calculate.ConvertTodecimal(1.4M);
             AverageLitersPerDrink = 0.5M;
             AverageEmptyCaloriesPerLiter = 215 * 2;
             InitialWeight = 67.5M;
