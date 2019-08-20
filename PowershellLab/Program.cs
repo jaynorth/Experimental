@@ -6,17 +6,61 @@ using System.Threading.Tasks;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.Management.Automation.Runspaces;
-using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace PowershellLab
 {
     class Program
     {
+
+        public static string Query { get; set; }
+
         static void Main(string[] args)
         {
-            Console.WriteLine(RunScript("Get-Process"));
-            Console.WriteLine("done");
+            //Console.WriteLine(RunScript("Get-Process | Out-GridView"));
+            //Console.WriteLine("done");
+            //Console.ReadKey();
+
+            //string scriptfile = @"D:\Powershell Scripts\SQLqueriesWithPowershell.ps1";
+            //Command runPowershellFile = new Command(scriptfile);
+
+            //string strCmdText;
+            //strCmdText = @"D:\Powershell Scripts\SQLqueriesWithPowershell.ps1";
+            //string PowershellPath = GetPowershellPath();
+
+            //try
+            //{
+            //    //Process.Start(PowershellPath, strCmdText);
+            //    Process.Start(strCmdText);
+            //}
+            //catch (Win32Exception exc)
+            //{
+
+            //    throw new Exception(exc.Message);
+            //}
+
+            string Dir = "D:\\Powershell Scripts\\";
+            string command = @"dir" + " " + Dir;
+
+            Console.WriteLine(RunScript("cd " + Dir));
+            //Console.WriteLine(RunScript("dir"));
+            //RunScript(@".\SQLqueriesWithPowershell.ps1");
+
+
+
+            Console.WriteLine("ran PS1");
             Console.ReadKey();
+
+        }
+
+        private static string GetPowershellPath()
+        {
+            string path = "";
+            path = RunScript("$PSHOME");
+
+            path = path + "\\powershell.exe";
+            return path;
         }
 
         private static string RunScript(string scriptText)

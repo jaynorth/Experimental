@@ -40,6 +40,22 @@ namespace CalculateTests
         }
 
         [TestMethod]
+        public void MoneySavedCalc_testValidAndSameXXX()
+        {
+            //Arrange
+            decimal NumberOfDays = 11M;
+            decimal AverageDrinksPerDay = 2m;
+            decimal AverageCostPerDrink = 3m;
+
+            decimal expected = 66M;
+            //Act
+            var actual = Calculate.Calculate.MoneySavedCalc(NumberOfDays, AverageDrinksPerDay, AverageCostPerDrink);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void MoneySavedCalc_testValidActualIsZero()
         {
             //Arrange
@@ -66,6 +82,10 @@ namespace CalculateTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+
+
+
 
         [TestMethod]
 
