@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculateTests", "Calculate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowershellLab", "PowershellLab\PowershellLab.csproj", "{18E23273-E663-49EB-9A14-AB58775A100E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculate.XunitTests", "Calculate.XunitTests\Calculate.XunitTests.csproj", "{5CF5CDA8-8D53-4C76-93CC-7CA6B597EE0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +43,17 @@ Global
 		{18E23273-E663-49EB-9A14-AB58775A100E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18E23273-E663-49EB-9A14-AB58775A100E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18E23273-E663-49EB-9A14-AB58775A100E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF5CDA8-8D53-4C76-93CC-7CA6B597EE0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF5CDA8-8D53-4C76-93CC-7CA6B597EE0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF5CDA8-8D53-4C76-93CC-7CA6B597EE0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF5CDA8-8D53-4C76-93CC-7CA6B597EE0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{50D4449A-74F4-4461-81FC-9CF1A4135092} = {3AF67F8C-243C-4495-80A3-66D5F7A061FD}
+		{5CF5CDA8-8D53-4C76-93CC-7CA6B597EE0D} = {3AF67F8C-243C-4495-80A3-66D5F7A061FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F9389DE-5854-4599-AB80-055287D29A82}
