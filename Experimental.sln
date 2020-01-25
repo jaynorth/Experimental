@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculate.XunitTests", "Cal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculateInterests", "CalculateInterests\CalculateInterests.csproj", "{5E1E39CC-374C-4F17-93C6-E2B1E07FE636}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LumpSumVsDCA", "LumpSumVsDCA\LumpSumVsDCA.csproj", "{A4938E90-B0A7-45C3-99F4-6921936F5FAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{5E1E39CC-374C-4F17-93C6-E2B1E07FE636}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E1E39CC-374C-4F17-93C6-E2B1E07FE636}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E1E39CC-374C-4F17-93C6-E2B1E07FE636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4938E90-B0A7-45C3-99F4-6921936F5FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4938E90-B0A7-45C3-99F4-6921936F5FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4938E90-B0A7-45C3-99F4-6921936F5FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4938E90-B0A7-45C3-99F4-6921936F5FAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

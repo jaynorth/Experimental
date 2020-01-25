@@ -22,16 +22,21 @@ namespace CalculateInterests
             Console.WriteLine("pourcent interet");
             var interest = Console.ReadLine();
 
-            OutputCalculations(BaseAmount, AddedAmount, years, interest);
+
+            Console.WriteLine("Taux Impot sur benef?");
+            var impotSource = Console.ReadLine();
+
+            OutputCalculations(BaseAmount, AddedAmount, years, interest, impotSource);
 
         }
 
-        private static void OutputCalculations(string baseAmount, string addedAmount, string years, string interest)
+        private static void OutputCalculations(string baseAmount, string addedAmount, string years, string interest, string impotSource)
         {
             decimal Baseamount = Convert.ToDecimal(baseAmount);
             decimal AddedAmount = Convert.ToDecimal(addedAmount);
             int Years = Convert.ToInt16(years);
             decimal Interest = Convert.ToDecimal(interest);
+            decimal ImpotSource = Convert.ToDecimal(impotSource);
 
             decimal Capital = Baseamount;
             Console.WriteLine("Capital Year 0 : " + Capital);
@@ -39,10 +44,13 @@ namespace CalculateInterests
 
             for (int i = 1; i <= Years; i++)
             {
-                Capital = YearInterest + AddedAmount + Capital;
-                YearInterest =  (Capital * (Interest / 100)) ;
+                YearInterest = (Capital * (Interest / 100));
+                var Tax = YearInterest * (ImpotSource / 100);
+                Capital = YearInterest + AddedAmount + Capital - Tax;
+
                 Console.WriteLine("Capital Year {0}: {1} ",i,Math.Round(Capital, 2));
                 Console.WriteLine("Interest Year {0} : {1}", i, Math.Round(YearInterest, 2));
+                Console.WriteLine("Tax Year {0} : {1}", i, Math.Round(Tax, 2));
             }
 
             Console.ReadKey();

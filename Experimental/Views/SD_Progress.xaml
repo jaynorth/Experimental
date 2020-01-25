@@ -52,7 +52,7 @@
             </StackPanel>
         </DockPanel>
         <DockPanel Grid.Row="1" Grid.Column="2" >
-            <StackPanel DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
                 <Label Content="Detox Level 1"/>
                 <ProgressBar 
                 Orientation="Horizontal"
@@ -65,6 +65,20 @@
                 Value="{Binding Level1Value, Mode=TwoWay}"
                 Minimum="{Binding Level1MinimumValue, Mode=TwoWay}"
                 Maximum="{Binding Level1MaximumValue, Mode=TwoWay}"       
+                />
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <Label Content="Poop Situation wellness"/>
+                <ProgressBar 
+                Orientation="Horizontal"
+                Foreground="GreenYellow"
+                Width="400"
+                Height="20"
+                HorizontalAlignment="Center"
+                Background="Lavender"
+                Value="{Binding PoopValue, Mode=TwoWay}"
+                Minimum="{Binding PoopMinimumValue, Mode=TwoWay}"
+                Maximum="{Binding PoopMaximumValue, Mode=TwoWay}"       
                 />
             </StackPanel>
 

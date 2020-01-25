@@ -85,6 +85,10 @@ namespace Experimental.ViewModels
         public decimal Level1Value { get; set; }
         public decimal Level1MinimumValue { get; set; }
         public decimal Level1MaximumValue { get; set; }
+        /* ProgressBar Poop*/
+        public decimal PoopValue { get; set; }
+        public decimal PoopMinimumValue { get; set; }
+        public decimal PoopMaximumValue { get; set; }
 
         private void Init()
         {
@@ -95,6 +99,21 @@ namespace Experimental.ViewModels
         private void UpdateProgressBars()
         {
             UpdateProgressBarLevel1();
+            UpdateProgressBarPoop();
+        }
+
+        private void UpdateProgressBarPoop( )
+        {
+            PoopMinimumValue = 0;
+            PoopMaximumValue = 30;
+            if (NumberOfDays >= PoopMaximumValue)
+            {
+                PoopValue = PoopMaximumValue;
+            }
+            else
+            {
+                PoopValue = NumberOfDays;
+            }
         }
 
         private void UpdateProgressBarLevel1()
@@ -109,11 +128,13 @@ namespace Experimental.ViewModels
             {
                 Level1Value = NumberOfDays;
             }
+            Level1MinimumValue = 0;
+
         }
 
         private void SetDefaultValues()
         {
-            StartDate = new DateTime(2019, 7, 21);
+            StartDate = new DateTime(2020, 1, 07);
             AverageDrinksPerDay = (decimal)33 / 7;
             AverageCostPerDrink = Calculate.Calculate.ConvertTodecimal(1.4M);
             AverageLitersPerDrink = 0.5M;
@@ -121,8 +142,7 @@ namespace Experimental.ViewModels
             InitialWeight = 67.5M;
             UnitsPerWeek = AverageDrinksPerDay * 7 * 1.8M;
             var RecommendedUnitsPerweek = 14;
-
-            
+ 
         }
 
 
