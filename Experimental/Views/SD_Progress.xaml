@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Experimental.Views"
              mc:Ignorable="d" 
+             Height="Auto"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="{x:Type StackPanel}" >
-            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Margin" Value="0,5,5,5"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}" >
             <Setter Property="Margin" Value="0,5,0,0"/>
@@ -56,7 +57,7 @@
                 <Label Content="Detox Level 1"/>
                 <ProgressBar 
                 Orientation="Horizontal"
-                Foreground="GreenYellow"
+                Foreground="Blue"
                 Width="400"
                 Name="TestProgressBar"
                 Height="20"
@@ -71,7 +72,7 @@
                 <Label Content="Poop Situation wellness"/>
                 <ProgressBar 
                 Orientation="Horizontal"
-                Foreground="GreenYellow"
+                Foreground="Blue"
                 Width="400"
                 Height="20"
                 HorizontalAlignment="Center"
@@ -79,6 +80,34 @@
                 Value="{Binding PoopValue, Mode=TwoWay}"
                 Minimum="{Binding PoopMinimumValue, Mode=TwoWay}"
                 Maximum="{Binding PoopMaximumValue, Mode=TwoWay}"       
+                />
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <Label Content="Sleep Situation wellness"/>
+                <ProgressBar 
+                Orientation="Horizontal"
+                Foreground="Blue"
+                Width="400"
+                Height="20"
+                HorizontalAlignment="Center"
+                Background="Lavender"
+                Value="{Binding SleepValue, Mode=TwoWay}"
+                Minimum="{Binding SleepMinimumValue, Mode=TwoWay}"
+                Maximum="{Binding SleepMaximumValue, Mode=TwoWay}"       
+                />
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <Label Content="Liver Recovery"/>
+                <ProgressBar 
+                Orientation="Horizontal"
+                Foreground="Blue"
+                Width="400"
+                Height="20"
+                HorizontalAlignment="Center"
+                Background="Lavender"
+                Value="{Binding LiverValue, Mode=TwoWay}"
+                Minimum="{Binding LiverMinimumValue, Mode=TwoWay}"
+                Maximum="{Binding LiverMaximumValue, Mode=TwoWay}"       
                 />
             </StackPanel>
 

@@ -90,6 +90,16 @@ namespace Experimental.ViewModels
         public decimal PoopMinimumValue { get; set; }
         public decimal PoopMaximumValue { get; set; }
 
+        /* ProgressBar Sleep*/
+        public decimal SleepValue { get; set; }
+        public decimal SleepMinimumValue { get; set; }
+        public decimal SleepMaximumValue { get; set; }
+
+        /* ProgressBar Liver */
+        public decimal LiverValue { get; set; }
+        public decimal LiverMinimumValue { get; set; }
+        public decimal LiverMaximumValue { get; set; }
+
         private void Init()
         {
             SetDefaultValues();
@@ -98,38 +108,33 @@ namespace Experimental.ViewModels
 
         private void UpdateProgressBars()
         {
-            UpdateProgressBarLevel1();
-            UpdateProgressBarPoop();
-        }
-
-        private void UpdateProgressBarPoop( )
-        {
-            PoopMinimumValue = 0;
-            PoopMaximumValue = 30;
-            if (NumberOfDays >= PoopMaximumValue)
-            {
-                PoopValue = PoopMaximumValue;
-            }
-            else
-            {
-                PoopValue = NumberOfDays;
-            }
-        }
-
-        private void UpdateProgressBarLevel1()
-        {
             Level1MinimumValue = 0;
             Level1MaximumValue = 17;
-            if (NumberOfDays >= Level1MaximumValue)
+            Level1MinimumValue = UpdateProgressBar(Level1MinimumValue, Level1MaximumValue);
+            PoopMinimumValue = 0;
+            PoopMaximumValue = 40;
+            PoopValue = UpdateProgressBar(PoopMinimumValue, PoopMaximumValue);
+            SleepMinimumValue = 0;
+            SleepMaximumValue = 65;
+            SleepValue = UpdateProgressBar(SleepMinimumValue, SleepMaximumValue);
+            LiverMinimumValue = 0;
+            LiverMaximumValue = 190;
+            LiverValue = UpdateProgressBar(LiverMinimumValue, LiverMaximumValue);
+        }
+
+        private decimal UpdateProgressBar(decimal minValue, decimal maxValue)
+        {
+            decimal ActualValue = 0;
+            if (NumberOfDays > minValue && NumberOfDays>=maxValue)
             {
-                Level1Value = Level1MaximumValue;
+                ActualValue = maxValue;
             }
             else
             {
-                Level1Value = NumberOfDays;
+                ActualValue = NumberOfDays - minValue;
             }
-            Level1MinimumValue = 0;
 
+            return ActualValue;
         }
 
         private void SetDefaultValues()
