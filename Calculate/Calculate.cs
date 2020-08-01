@@ -59,7 +59,11 @@ namespace Calculate
                 if (months%12 ==0)
                 {
                     var benefits = accumulatedCapital * (AverageYearlyReturnPercent / 100);
-                    var Impots = benefits * (ImpotSource / 100);
+                    /* Impots sur dividendes  */
+                    decimal dividendesYield = 2.05m;/* en pourcent*/
+                    var dividendes = accumulatedCapital * dividendesYield/100;
+                    //var Impots = benefits * (ImpotSource / 100);
+                    var Impots = dividendes * (ImpotSource / 100);
                     benefits = benefits - Impots;
                     accumulatedCapital = accumulatedCapital + benefits;
                     year++;
@@ -74,6 +78,7 @@ namespace Calculate
             var ThenbenefitsPerYear = Math.Round(accumulatedCapital * (AverageYearlyReturnPercent / 100), 2);
             var ThenbenefitsPerMonth = Math.Round((accumulatedCapital * (AverageYearlyReturnPercent / 100))/12, 2);
 
+            Console.WriteLine();
             Console.WriteLine("Capital : {0} Benefits Per Year {1} Benefits Per Month {2}", Math.Round(accumulatedCapital, 0), ThenbenefitsPerYear, ThenbenefitsPerMonth);
 
             return FireDate;
@@ -81,11 +86,8 @@ namespace Calculate
 
         private static decimal GetFireCapitalRequired(decimal monthlyProjectedspendings, decimal withdrawalRatePercent)
         {
-
             var capital = monthlyProjectedspendings * 12  * (100 / withdrawalRatePercent);
-
             return capital;
-
         }
 
         public static decimal ConvertTodecimal(decimal input)

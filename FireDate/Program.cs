@@ -34,7 +34,7 @@ namespace FireDate
             Console.WriteLine("Futur budget souhaité par mois");
             var MonthlyProjectedspendings = Console.ReadLine();
 
-            Console.WriteLine("Impot source");
+            Console.WriteLine("Taux Impot sur benef/dividendes en %");
             var ImpotSource = Console.ReadLine();
 
             Console.WriteLine("retour moyen en pourcent");
